@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Skill Dashboard | SOIP Trainee Portal</title>
+  <meta name="description" content="Personalised Trainee Skill Dashboard — SOIP. Track your course progress, unlock your Industry Skill Gap Analysis and get tailored bridge recommendations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="trainee-dashboard.css">
+</head>
+<body>
+
+  <!-- National Tricolor Stripe -->
+  <div class="tricolor-stripe"></div>
+
+  <!-- Portal Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <span class="gov-label">भारत सरकार | GOVERNMENT OF INDIA &nbsp;•&nbsp; कौशल विकास एवं उद्यमशीलता मंत्रालय (MSDE)</span>
+      <a href="index.html" class="back-link">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        Back to Portal
+      </a>
+    </div>
+  </div>
+
+  <!-- Portal Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand" onclick="window.location='index.html'">
+        <svg class="emblem" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8C35 8 28 18 28 28C28 38 35 44 40 47C35 48 24 53 24 65C24 78 35 84 50 84C65 84 76 78 76 65C76 53 65 48 60 47C65 44 72 38 72 28C72 18 65 8 50 8Z" fill="#8B5A2B" opacity="0.9"/>
+          <path d="M50 14C40 14 36 21 36 28C36 35 41 40 50 40C59 40 64 35 64 28C64 21 60 14 50 14Z" fill="#DAA520"/>
+          <path d="M30 65C30 55 38 52 50 52C62 52 70 55 70 65C70 74 61 78 50 78C39 78 30 74 30 65Z" fill="#DAA520"/>
+          <rect x="20" y="88" width="60" height="10" rx="3" fill="#8B5A2B"/>
+          <circle cx="50" cy="108" r="8" stroke="#003366" stroke-width="2" fill="#FFFFFF"/>
+          <circle cx="50" cy="108" r="2" fill="#003366"/>
+          <path d="M50 100 L50 116 M42 108 L58 108 M44 102 L56 114 M44 114 L56 102" stroke="#003366" stroke-width="1"/>
+          <rect x="10" y="118" width="80" height="6" rx="2" fill="#8B5A2B"/>
+        </svg>
+        <div>
+          <div class="brand-title">Skill Outcome Intelligence Portal</div>
+          <div class="brand-sub">National Outcome Tracking Engine &bull; MSDE &bull; SIH 2026</div>
+        </div>
+      </div>
+      <div class="header-badge">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+        Trainee Dashboard
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================
+       MAIN DASHBOARD
+       ====================================== -->
+  <main class="dashboard-main">
+
+    <!-- ======= PROFILE HERO CARD ======= -->
+    <section class="profile-hero-card">
+      <div class="profile-hero-inner">
+        <!-- Left: Avatar & Identity -->
+        <div class="profile-identity-col">
+          <div class="avatar-ring-wrapper">
+            <div class="avatar-outer-ring"></div>
+            <img src="assets/images/trainee_tech.jpg" alt="Trainee Photo" class="profile-avatar" id="trainee-avatar">
+            <div class="avatar-status-dot"></div>
+          </div>
+          <div class="profile-id-block">
+            <h1 class="trainee-name" id="trainee-name">Alex Morgan</h1>
+            <div class="persistent-id-chip" id="trainee-id-chip">
+              <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path></svg>
+              MFG-26#TR-89421
+            </div>
+            <div class="profile-meta-tags">
+              <span class="meta-tag">Advanced Manufacturing Technology</span>
+              <span class="meta-tag scheme">PMKVY 4.0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Info Grid -->
+        <div class="profile-details-grid">
+          <div class="profile-detail-cell">
+            <span class="detail-label">Training Center</span>
+            <span class="detail-val">National Skill Training Institute (NSTI), Noida</span>
+          </div>
+          <div class="profile-detail-cell">
+            <span class="detail-label">District / State</span>
+            <span class="detail-val">Gautam Buddha Nagar, Uttar Pradesh</span>
+          </div>
+          <div class="profile-detail-cell">
+            <span class="detail-label">Batch ID</span>
+            <span class="detail-val"><code>NSTI-MFG-2026-B4</code></span>
+          </div>
+          <div class="profile-detail-cell">
+            <span class="detail-label">Skilling Scheme</span>
+            <span class="detail-val">PMKVY 4.0 — Special Green Jobs Window</span>
+          </div>
+          <div class="profile-detail-cell">
+            <span class="detail-label">Enrollment Date</span>
+            <span class="detail-val">March 15, 2026</span>
+          </div>
+          <div class="profile-detail-cell">
+            <span class="detail-label">Follow-Up Status</span>
+            <span class="detail-val" style="color:#10b981; font-weight:700;">✓ Active Tracking (30d milestone due)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= AI PLACEMENT PREDICTOR CARD ======= -->
+    <section class="progress-section" style="margin-top: 24px;">
+      <div class="progress-card">
+        <div class="progress-card-header">
+          <div>
+            <h2 class="card-title">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              AI Placement Probability Predictor
+            </h2>
+            <p class="card-subtitle">Real-time Machine Learning prediction powered by SkillTrace Random Forest Engine</p>
+          </div>
+        </div>
+
+        <form id="predictionForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 16px;">
+          <div>
+            <label style="display:block; font-size: 13px; font-weight:600; margin-bottom: 6px;">Attendance (%):</label>
+            <input type="number" id="attendance" value="85" required min="0" max="100" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+          </div>
+          
+          <div>
+            <label style="display:block; font-size: 13px; font-weight:600; margin-bottom: 6px;">Assessment Score (%):</label>
+            <input type="number" id="assessment_score" value="78" required min="0" max="100" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+          </div>
+
+          <div>
+            <label style="display:block; font-size: 13px; font-weight:600; margin-bottom: 6px;">Duration (Days):</label>
+            <input type="number" id="duration_days" value="90" required min="1" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+          </div>
+
+          <div>
+            <label style="display:block; font-size: 13px; font-weight:600; margin-bottom: 6px;">Sector:</label>
+            <select id="sector" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+              <option value="IT">IT</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Manufacturing" selected>Manufacturing</option>
+              <option value="Retail">Retail</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block; font-size: 13px; font-weight:600; margin-bottom: 6px;">Skill Level:</label>
+            <select id="skill_level" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px;">
+              <option value="Basic">Basic</option>
+              <option value="Intermediate" selected>Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+
+          <div style="grid-column: 1 / -1; margin-top: 8px;">
+            <button type="submit" id="predictBtn" style="background: #003366; color: white; padding: 10px 20px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer;">
+              ⚡ Calculate Placement Probability
+            </button>
+          </div>
+        </form>
+
+        <div id="predictionResult" style="display: none; margin-top: 20px; padding: 16px; border-radius: 8px; background-color: #f0fdf4; border: 1px solid #bbf7d0;">
+          <h3 style="margin: 0 0 8px 0; color: #166534;">Prediction Output:</h3>
+          <p style="margin: 4px 0; font-size: 15px;"><strong>Status:</strong> <span id="resultStatus" style="color: #15803d; font-weight: 700;"></span></p>
+          <p style="margin: 4px 0; font-size: 15px;"><strong>Placement Probability:</strong> <span id="resultProb" style="color: #15803d; font-weight: 700;"></span>%</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= COURSE PROGRESS CARD ======= -->
+    <section class="progress-section">
+      <div class="progress-card">
+        <div class="progress-card-header">
+          <div>
+            <h2 class="card-title">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+              Course Progress — Advanced Manufacturing Technology
+            </h2>
+            <p class="card-subtitle">Completion determines when your Skill Gap Analysis unlocks</p>
+          </div>
+          <!-- Demo Simulation Controls -->
+          <div class="sim-controls">
+            <span class="sim-label">Simulate Progress:</span>
+            <div class="sim-buttons">
+              <button class="sim-btn" onclick="setProgress(45)" id="btn-45">45%</button>
+              <button class="sim-btn" onclick="setProgress(75)" id="btn-75">75%</button>
+              <button class="sim-btn active" onclick="setProgress(85)" id="btn-85">85%</button>
+              <button class="sim-btn" onclick="setProgress(100)" id="btn-100">100%</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar-area">
+          <div class="progress-track">
+            <div class="progress-fill" id="course-progress-fill" style="width: 85%;">
+              <div class="progress-shimmer"></div>
+            </div>
+            <!-- 80% unlock threshold marker -->
+            <div class="progress-threshold-marker" id="threshold-marker">
+              <div class="threshold-line"></div>
+              <div class="threshold-label">80% Unlock</div>
+            </div>
+          </div>
+
+          <div class="progress-labels-row">
+            <div class="progress-pct-display">
+              <span class="progress-pct-num" id="progress-pct-num">85</span>
+              <span class="progress-pct-symbol">%</span>
+              <span class="progress-pct-label" id="progress-pct-label">Course Completed</span>
+            </div>
+            <div class="progress-status-pill" id="progress-status-pill">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Skill Analysis Unlocked
+            </div>
+          </div>
+        </div>
+
+        <!-- Module Progress Breakdown -->
+        <div class="module-breakdown-grid">
+          <div class="module-item">
+            <div class="module-info"><span>Occupational Safety & Induction</span><span class="module-pct-text">100%</span></div>
+            <div class="mini-bar-track"><div class="mini-bar-fill" style="width:100%; background:#10b981;"></div></div>
+          </div>
+          <div class="module-item">
+            <div class="module-info"><span>Welding Safety & Practices</span><span class="module-pct-text">100%</span></div>
+            <div class="mini-bar-track"><div class="mini-bar-fill" style="width:100%; background:#10b981;"></div></div>
+          </div>
+          <div class="module-item">
+            <div class="module-info"><span>Machine Operation Fundamentals</span><span class="module-pct-text">90%</span></div>
+            <div class="mini-bar-track"><div class="mini-bar-fill" style="width:90%; background:#10b981;"></div></div>
+          </div>
+          <div class="module-item">
+            <div class="module-info"><span>CAD Design (Basic to Intermediate)</span><span class="module-pct-text">50%</span></div>
+            <div class="mini-bar-track"><div class="mini-bar-fill" style="width:50%; background:#f59e0b;"></div></div>
+          </div>
+          <div class="module-item">
+            <div class="module-info"><span>CNC Machining Practical Lab</span><span class="module-pct-text">20%</span></div>
+            <div class="mini-bar-track"><div class="mini-bar-fill" style="width:20%; background:#ef4444;"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= CONDITIONAL SKILL GAP ANALYSIS ======= -->
+    <section class="skill-gap-section" id="skill-gap-section">
+
+      <!-- LOCKED STATE (shown when < 80%) -->
+      <div class="locked-overlay-card" id="locked-state">
+        <div class="locked-icon-wrap">
+          <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        </div>
+        <h3 class="locked-title">Industry Skill Gap Analysis & Job Readiness Report</h3>
+        <p class="locked-message">
+          🔒 Complete at least <strong>80%</strong> of your course to unlock your personalised Industry Skill Gap Analysis & Job Readiness Report.
+        </p>
+        <div class="locked-progress-hint">
+          <div class="hint-bar-track">
+            <div class="hint-bar-fill" id="hint-bar-fill"></div>
+          </div>
+          <span class="hint-text" id="hint-text">0% of 80% threshold reached</span>
+        </div>
+      </div>
+
+      <!-- UNLOCKED FULL ANALYSIS (shown when >= 80%) -->
+      <div class="unlocked-analysis" id="unlocked-state">
+
+        <!-- Section header -->
+        <div class="gap-section-header">
+          <div class="gap-section-badge">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path></svg>
+            Unlocked — Skill Gap Intelligence Report
+          </div>
+          <h2 class="gap-section-title">Your Industry Skill Gap Analysis</h2>
+          <p class="gap-section-sub">Comparing your course-trained proficiency against current employer demand in Advanced Manufacturing</p>
+        </div>
+
+        <!-- Legend Row -->
+        <div class="legend-row">
+          <div class="legend-item">
+            <span class="legend-dot blue"></span>Course Skill Level
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot navy"></span>Employer Demand
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot green"></span>Matches Demand
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot yellow"></span>Minor Gap
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot red"></span>Critical Gap
+          </div>
+        </div>
+
+        <!-- Chart Card -->
+        <div class="chart-card">
+          <h3 class="chart-card-title">Skill Proficiency: Course vs. Employer Demand</h3>
+          <div class="chart-wrapper">
+            <canvas id="skillGapChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Detailed Skill Bars -->
+        <div class="skill-bars-card">
+          <h3 class="chart-card-title">Detailed Skill Breakdown</h3>
+          <div id="skill-bars-container">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Job Readiness Score -->
+        <div class="job-readiness-card">
+          <div class="readiness-left">
+            <h3>Overall Job Readiness Score</h3>
+            <p>Based on employer-weighted skill match across all competencies</p>
+            <div class="readiness-bar-track">
+              <div class="readiness-bar-fill" id="readiness-bar-fill" style="width: 65%;">
+                <div class="readiness-shimmer"></div>
+              </div>
+            </div>
+            <div class="readiness-score-row">
+              <span class="readiness-score-num" id="readiness-score-num">65</span>
+              <span class="readiness-score-label">/ 100 &nbsp;&nbsp; <em>Good — Bridge 2 critical skills to reach Industry Ready (85+)</em></span>
+            </div>
+          </div>
+          <div class="readiness-gauge-wrap">
+            <canvas id="readinessGauge" width="180" height="180"></canvas>
+            <div class="gauge-center-text" id="gauge-center-text">65%</div>
+          </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="recommendations-card">
+          <h3 class="rec-section-title">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 02 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+            Recommended Next Steps — Bridge Your Gaps
+          </h3>
+          <div id="recommendations-container">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Portal Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>&copy; 2026 Ministry of Skill Development and Entrepreneurship, Government of India &nbsp;•&nbsp; Skill Outcome Intelligence Portal (SOIP)</div>
+      <div><a href="index.html" style="color:#94a3b8;">← Back to Main Portal</a></div>
+    </div>
+  </footer>
+
+  <script src="trainee-dashboard.js"></script>
+</body>
+</html>

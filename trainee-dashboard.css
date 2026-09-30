@@ -1,0 +1,902 @@
+/* ==========================================================================
+   TRAINEE SKILL DASHBOARD — SOIP
+   SIH 2026 | Government of India Design System
+   ========================================================================== */
+
+:root {
+  --gov-navy-dark: #002244;
+  --gov-navy: #003366;
+  --gov-blue: #1a56db;
+  --gov-saffron: #ff9933;
+  --gov-green: #138808;
+  --bg-main: #f0f4f8;
+  --bg-surface: #ffffff;
+  --border-color: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --font-family: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Outfit', 'Inter', sans-serif;
+  --shadow-card: 0 4px 24px -4px rgba(15,23,42,0.10);
+  --shadow-hero: 0 12px 40px -8px rgba(0,51,102,0.20);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-family);
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   TRICOLOR STRIPE
+   ========================================= */
+.tricolor-stripe {
+  height: 5px;
+  background: linear-gradient(to right,
+    #FF9933 0%, #FF9933 33.33%,
+    #FFFFFF 33.33%, #FFFFFF 66.66%,
+    #138808 66.66%, #138808 100%
+  );
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* =========================================
+   TOP UTILITY BAR
+   ========================================= */
+.top-bar {
+  background: var(--gov-navy-dark);
+  padding: 7px 0;
+}
+.top-bar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.gov-label {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.75rem;
+  color: #93c5fd;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.back-link:hover { color: #fff; }
+
+/* =========================================
+   SITE HEADER
+   ========================================= */
+.site-header {
+  background: var(--gov-navy);
+  border-bottom: 3px solid var(--gov-saffron);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 14px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+.emblem { width: 48px; height: 62px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.brand-sub {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.6);
+  margin-top: 1px;
+}
+.header-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #e0f2fe;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* =========================================
+   DASHBOARD MAIN LAYOUT
+   ========================================= */
+.dashboard-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* =========================================
+   PROFILE HERO CARD
+   ========================================= */
+.profile-hero-card {
+  background: linear-gradient(135deg, var(--gov-navy) 0%, #1e3a6e 60%, #0f4c81 100%);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-hero);
+  overflow: hidden;
+  position: relative;
+}
+.profile-hero-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.profile-hero-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 32px 36px;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+/* Avatar */
+.profile-identity-col {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.avatar-ring-wrapper {
+  position: relative;
+  width: 90px;
+  height: 90px;
+}
+.avatar-outer-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #FF9933, #FFFFFF, #138808, #FF9933);
+  animation: spin-ring 6s linear infinite;
+}
+@keyframes spin-ring {
+  to { transform: rotate(360deg); }
+}
+.profile-avatar {
+  position: absolute;
+  inset: 4px;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  z-index: 1;
+}
+.avatar-status-dot {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 14px;
+  height: 14px;
+  background: #10b981;
+  border-radius: 50%;
+  border: 2px solid var(--gov-navy);
+  z-index: 2;
+}
+
+/* Identity text */
+.profile-id-block { color: #fff; }
+.trainee-name {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.persistent-id-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-family: monospace;
+  font-weight: 700;
+  color: #bfdbfe;
+  margin-bottom: 10px;
+}
+.profile-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.meta-tag {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.9);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.meta-tag.scheme {
+  background: rgba(255,153,51,0.25);
+  border-color: rgba(255,153,51,0.5);
+  color: #fde68a;
+}
+
+/* Profile Details Grid */
+.profile-details-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  min-width: 0;
+}
+@media (max-width: 860px) {
+  .profile-details-grid { grid-template-columns: 1fr 1fr; }
+  .profile-hero-inner { flex-direction: column; }
+}
+.profile-detail-cell {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+.detail-label {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 3px;
+  font-weight: 700;
+}
+.detail-val {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
+.detail-val code {
+  font-family: monospace;
+  background: rgba(255,255,255,0.1);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: #bfdbfe;
+}
+
+/* =========================================
+   PROGRESS SECTION
+   ========================================= */
+.progress-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 28px 32px;
+  border: 1px solid var(--border-color);
+}
+.progress-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+}
+.card-subtitle {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Simulation Controls */
+.sim-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.sim-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.sim-buttons { display: flex; gap: 6px; }
+.sim-btn {
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border-color);
+  background: #f8fafc;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.sim-btn:hover { border-color: var(--gov-blue); color: var(--gov-blue); background: #eff6ff; }
+.sim-btn.active { background: var(--gov-navy); color: #fff; border-color: var(--gov-navy); }
+
+/* Progress Bar */
+.progress-bar-area { margin-bottom: 24px; }
+.progress-track {
+  height: 22px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  position: relative;
+  overflow: visible;
+  border: 1px solid #e2e8f0;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #1a56db, #0ea5e9);
+  position: relative;
+  overflow: hidden;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 0;
+}
+.progress-fill.success {
+  background: linear-gradient(90deg, #059669, #10b981);
+}
+.progress-fill.warning {
+  background: linear-gradient(90deg, #d97706, #f59e0b);
+}
+.progress-fill.danger {
+  background: linear-gradient(90deg, #dc2626, #ef4444);
+}
+.progress-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* 80% Threshold Marker */
+.progress-threshold-marker {
+  position: absolute;
+  left: 80%;
+  top: -6px;
+  bottom: -6px;
+  z-index: 10;
+}
+.threshold-line {
+  width: 2px;
+  height: 100%;
+  background: #f59e0b;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.threshold-label {
+  position: absolute;
+  top: -22px;
+  left: 4px;
+  white-space: nowrap;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #b45309;
+  background: #fef3c7;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid #fde68a;
+}
+
+.progress-labels-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+.progress-pct-display {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.progress-pct-num {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: var(--gov-navy);
+  transition: var(--transition);
+}
+.progress-pct-symbol {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gov-navy);
+}
+.progress-pct-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-left: 8px;
+  font-weight: 500;
+}
+.progress-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  background: #dcfce7;
+  color: #15803d;
+  border: 1.5px solid #86efac;
+  transition: var(--transition);
+}
+.progress-status-pill.locked {
+  background: #fef3c7;
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+/* Module Breakdown */
+.module-breakdown-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+.module-item { display: flex; flex-direction: column; gap: 4px; }
+.module-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.module-pct-text { font-weight: 700; color: var(--text-primary); }
+.mini-bar-track {
+  height: 7px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.mini-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* =========================================
+   SKILL GAP SECTION
+   ========================================= */
+.skill-gap-section { display: flex; flex-direction: column; gap: 20px; }
+
+/* LOCKED OVERLAY */
+.locked-overlay-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius);
+  border: 2px dashed #e2e8f0;
+  padding: 56px 32px;
+  text-align: center;
+  display: none;
+}
+.locked-overlay-card.visible { display: block; }
+.locked-icon-wrap {
+  width: 80px;
+  height: 80px;
+  background: #f1f5f9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: #94a3b8;
+}
+.locked-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+  margin-bottom: 10px;
+}
+.locked-message {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+.locked-progress-hint { max-width: 380px; margin: 0 auto; }
+.hint-bar-track {
+  height: 10px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  border: 1px solid #e2e8f0;
+}
+.hint-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+.hint-text {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* UNLOCKED ANALYSIS */
+.unlocked-analysis {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeSlideIn 0.5s ease forwards;
+}
+.unlocked-analysis.visible { display: flex; }
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section Header */
+.gap-section-header {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border: 1.5px solid #bfdbfe;
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+.gap-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #1d4ed8;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.gap-section-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+  margin-bottom: 6px;
+}
+.gap-section-sub {
+  font-size: 0.875rem;
+  color: #3b82f6;
+}
+
+/* Legend */
+.legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 14px 20px;
+  background: #f8fafc;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.legend-dot.blue { background: #3b82f6; }
+.legend-dot.navy { background: #1e3a5f; }
+.legend-dot.green { background: #10b981; }
+.legend-dot.yellow { background: #f59e0b; }
+.legend-dot.red { background: #ef4444; }
+
+/* Chart & Bar Cards */
+.chart-card, .skill-bars-card, .recommendations-card, .job-readiness-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  padding: 28px 32px;
+  border: 1px solid var(--border-color);
+}
+.chart-card-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+  margin-bottom: 20px;
+}
+.chart-wrapper {
+  height: 280px;
+  position: relative;
+}
+
+/* Skill Detail Bars */
+.skill-detail-row {
+  padding: 16px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+.skill-detail-row:last-child { border-bottom: none; }
+.skill-row-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.skill-name {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+}
+.skill-status-tag {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.skill-status-tag.match { background: #dcfce7; color: #15803d; }
+.skill-status-tag.minor { background: #fef3c7; color: #92400e; }
+.skill-status-tag.critical { background: #fee2e2; color: #991b1b; }
+
+.dual-bar-wrapper { display: flex; flex-direction: column; gap: 6px; }
+.dual-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.dual-bar-label {
+  width: 130px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  text-align: right;
+}
+.dual-bar-track {
+  flex: 1;
+  height: 10px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: visible;
+  position: relative;
+}
+.dual-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.dual-bar-pct {
+  width: 38px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-align: left;
+}
+.gap-indicator-bar {
+  height: 4px;
+  border-radius: 999px;
+  margin-top: 4px;
+  margin-left: 140px;
+  transition: width 0.7s ease;
+}
+
+/* Job Readiness Card */
+.job-readiness-card {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.readiness-left {
+  flex: 1;
+  min-width: 280px;
+}
+.readiness-left h3 {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+  margin-bottom: 5px;
+}
+.readiness-left p {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+.readiness-bar-track {
+  height: 18px;
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 12px;
+}
+.readiness-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #1d4ed8, #0ea5e9);
+  position: relative;
+  overflow: hidden;
+  transition: width 0.7s ease;
+}
+.readiness-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+.readiness-score-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.readiness-score-num {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--gov-navy);
+}
+.readiness-score-label {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+/* Gauge */
+.readiness-gauge-wrap {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+}
+.gauge-center-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gov-navy);
+  pointer-events: none;
+}
+
+/* Recommendations */
+.rec-section-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+  margin-bottom: 20px;
+}
+.rec-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid;
+  margin-bottom: 12px;
+  transition: var(--transition);
+}
+.rec-card:last-child { margin-bottom: 0; }
+.rec-card:hover { transform: translateX(4px); }
+.rec-card.priority-critical { background: #fff5f5; border-color: #fecaca; }
+.rec-card.priority-minor { background: #fffbeb; border-color: #fde68a; }
+.rec-card.priority-good { background: #f0fdf4; border-color: #bbf7d0; }
+.rec-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.rec-card.priority-critical .rec-icon { background: #fee2e2; }
+.rec-card.priority-minor .rec-icon { background: #fef3c7; }
+.rec-card.priority-good .rec-icon { background: #dcfce7; }
+.rec-content h4 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+.rec-content p {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.rec-badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.rec-badge.critical { background: #fee2e2; color: #991b1b; }
+.rec-badge.minor { background: #fef3c7; color: #92400e; }
+.rec-badge.good { background: #dcfce7; color: #14532d; }
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.site-footer {
+  background: var(--gov-navy-dark);
+  border-top: 3px solid var(--gov-saffron);
+  padding: 18px 0;
+}
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #64748b;
+}

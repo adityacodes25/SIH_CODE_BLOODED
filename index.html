@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Outcome Intelligence Portal | Government of India</title>
+  <meta name="description" content="A longitudinal outcome tracking and intelligence platform to measure impact, identify skill gaps, and improve skill development programs across India. Smart India Hackathon (SIH 2026).">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Chart.js for Outcome Intelligence Graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=2.2">
+</head>
+<body>
+
+  <!-- National Tricolor Accent Header Stripe -->
+  <div class="tricolor-stripe"></div>
+
+  <!-- Government Top Utility & Accessibility Bar -->
+  <div class="gov-top-bar">
+    <div class="gov-top-container">
+      <div class="gov-org-text">
+        <span>भारत सरकार | GOVERNMENT OF INDIA</span>
+        <span>&bull;</span>
+        <span>कौशल विकास एवं उद्यमशीलता मंत्रालय (MSDE)</span>
+      </div>
+      <div class="gov-accessibility-tools">
+        <div class="active-role-pill" id="active-role-display" onclick="openRoleModal()" title="Click to switch access role">
+          <span id="role-badge-text">🏛️ Admin Dashboard (Supreme)</span>
+          <span style="font-size:0.65rem; color:#3b82f6;">[Switch]</span>
+        </div>
+        <span>Font Size:</span>
+        <button class="a11y-btn" id="font-dec" title="Decrease font size">A-</button>
+        <button class="a11y-btn" id="font-reset" title="Normal font size">A</button>
+        <button class="a11y-btn" id="font-inc" title="Increase font size">A+</button>
+        <button class="a11y-btn" id="contrast-toggle" title="High Contrast Mode">🌓 Contrast</button>
+        <div class="lang-switch" id="lang-toggle" title="Toggle Language">
+          🌐 English / हिन्दी
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <!-- National Emblem & Portal Branding -->
+      <div class="brand-wrapper" onclick="document.querySelector('[data-tab=\'home\']').click()">
+        <!-- Lion Capital SVG Emblem of India -->
+        <!-- <svg class="national-emblem" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8C35 8 28 18 28 28C28 38 35 44 40 47C35 48 24 53 24 65C24 78 35 84 50 84C65 84 76 78 76 65C76 53 65 48 60 47C65 44 72 38 72 28C72 18 65 8 50 8Z" fill="#8B5A2B" opacity="0.9"/>
+          <path d="M50 14C40 14 36 21 36 28C36 35 41 40 50 40C59 40 64 35 64 28C64 21 60 14 50 14Z" fill="#DAA520"/>
+          <path d="M30 65C30 55 38 52 50 52C62 52 70 55 70 65C70 74 61 78 50 78C39 78 30 74 30 65Z" fill="#DAA520"/>
+          <rect x="20" y="88" width="60" height="10" rx="3" fill="#8B5A2B"/>
+          <!-- Ashoka Chakra -->
+          <circle cx="50" cy="108" r="8" stroke="#003366" stroke-width="2" fill="#FFFFFF"/>
+          <circle cx="50" cy="108" r="2" fill="#003366"/>
+          <path d="M50 100 L50 116 M42 108 L58 108 M44 102 L56 114 M44 114 L56 102" stroke="#003366" stroke-width="1"/>
+          <!-- Base Pedestal -->
+          <rect x="10" y="118" width="80" height="6" rx="2" fill="#8B5A2B"/>
+        </svg> -->
+
+        <img 
+    src="assets/images/emblem2.png" 
+    alt="Emblem of India" 
+    class="national-emblem"
+>
+        <div class="brand-text">
+          <h1 class="brand-title">Skill Outcome Intelligence Portal</h1>
+          <span class="brand-subtitle">National Outcome Tracking Engine &bull; MSDE &bull; SIH 2026</span>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs (Dynamic Visibility Based on User Role) -->
+      <nav>
+        <ul class="nav-menu" id="main-nav-menu">
+          <li><button class="nav-item-btn active" data-tab="home">Home</button></li>
+          <li id="nav-item-trainee"><button class="nav-item-btn" data-tab="trainee-portal">Trainee Interface</button></li>
+          <li id="nav-item-provider"><button class="nav-item-btn" data-tab="provider-portal">Training Provider Interface</button></li>
+          <li id="nav-item-policy"><button class="nav-item-btn" data-tab="policy-admin">Admin Dashboard</button></li>
+        </ul>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="header-actions">
+        <button class="btn-primary btn-sm" onclick="openRegisterTraineeModal()">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"></path></svg>
+          Register Trainee
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       TAB 1: HOME & HERO SECTION (MATCHES PROVIDED MOCKUP)
+       ========================================================================= -->
+  <div id="tab-home" class="tab-content-panel active">
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-background-lines"></div>
+      <div class="hero-container">
+        <!-- Left Hero Content -->
+        <div class="hero-content">
+          <div class="gov-badge-pill">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+            </svg>
+            Building a skilled, employed and empowered India
+          </div>
+
+          <h2 class="hero-title">Tracking Training.<br>Transforming Lives.</h2>
+
+          <p class="hero-description">
+            A longitudinal outcome tracking and intelligence platform to measure impact, identify gaps and improve the effectiveness of skill development programs.
+          </p>
+
+          <div class="hero-cta-group">
+            <button class="btn-primary" data-goto-tab="policy-admin">
+              Explore Dashboard
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+            <button class="btn-outline" data-goto-tab="trainee-portal">
+              Trainee Interface
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Hero Visuals: Diamond Collage with Trainee Photos -->
+        <div class="hero-visual-wrapper">
+          <div class="diamond-collage">
+            <!-- Top Right: Female Trainee -->
+            <div class="diamond-card diamond-primary">
+              <img src="assets/images/trainee_woman.jpg" alt="Vocational Trainee in Electrical & Smart Automation">
+            </div>
+            <!-- Bottom Left: Solar Technician -->
+            <div class="diamond-card diamond-secondary">
+              <img src="assets/images/trainee_solar.jpg" alt="Solar PV Energy Technician in Training Center">
+            </div>
+            <!-- Bottom Right: IT Trainee -->
+            <div class="diamond-card diamond-tertiary">
+              <img src="assets/images/trainee_tech.jpg" alt="IT & Digital Skills Trainee in Lab">
+            </div>
+            <!-- Verified Outcome floating chip -->
+            <div class="floating-verified-badge">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Persistent Trainee ID &bull; Automated Follow-Up Linked
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Statistics Cards (Exact 4 Cards from Provided Mockup) -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card" style="cursor:pointer;" data-goto-tab="trainee-portal">
+          <div class="stat-icon-wrapper">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+          </div>
+          <div class="stat-value">2.4M+</div>
+          <div class="stat-label">Trainees Tracked</div>
+        </div>
+
+        <div class="stat-card" style="cursor:pointer;" data-goto-tab="policy-admin">
+          <div class="stat-icon-wrapper">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          </div>
+          <div class="stat-value">1.6M+</div>
+          <div class="stat-label">Placed / Self-Employed</div>
+        </div>
+
+        <div class="stat-card" style="cursor:pointer;" data-goto-tab="policy-admin">
+          <div class="stat-icon-wrapper">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          </div>
+          <div class="stat-value">61%</div>
+          <div class="stat-label">12-Month Retention</div>
+        </div>
+
+        <div class="stat-card" style="cursor:pointer;" data-goto-tab="provider-portal">
+          <div class="stat-icon-wrapper">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+          </div>
+          <div class="stat-value">28K+</div>
+          <div class="stat-label">Programs Monitored</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dark Navy Feature Ribbon Bar (From Mockup) -->
+    <section class="feature-ribbon-section">
+      <div class="feature-ribbon-container">
+        <div class="ribbon-item">
+          <div class="ribbon-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+          </div>
+          <div class="ribbon-text">
+            <h4>Longitudinal Tracking</h4>
+            <p>Track outcomes up to 36 months</p>
+          </div>
+        </div>
+
+        <div class="ribbon-item">
+          <div class="ribbon-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          </div>
+          <div class="ribbon-text">
+            <h4>Outcome Intelligence</h4>
+            <p>Data-driven insights & analytics</p>
+          </div>
+        </div>
+
+        <div class="ribbon-item">
+          <div class="ribbon-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          </div>
+          <div class="ribbon-text">
+            <h4>Actionable Recommendations</h4>
+            <p>Improve training & livelihood outcomes</p>
+          </div>
+        </div>
+
+        <div class="ribbon-item">
+          <div class="ribbon-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
+          </div>
+          <div class="ribbon-text">
+            <h4>Evidence for Policy</h4>
+            <p>Better decisions, better impact</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+
+  <!-- =========================================================================
+       TAB 2: TRAINEE INTERFACE (PERSISTENT ID + AUTOMATED FOLLOW-UPS)
+       ========================================================================= -->
+  <div id="tab-trainee-portal" class="tab-content-panel">
+    <div class="app-container">
+      <div class="section-header-block">
+        <div>
+          <h2 class="section-title">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+            Trainee Interface & Training Records
+          </h2>
+          <p class="section-subtitle">Single Persistent Trainee ID (Sector-26#XXXXXX) &bull; 1:N Multi-Course History &bull; Automated Follow-Up Milestones</p>
+        </div>
+        <button class="btn-primary" onclick="openRegisterTraineeModal()">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+          Register Trainee
+        </button>
+      </div>
+
+      <!-- TRAINEE'S OWN RECORD -->
+
+<div class="trainee-own-record">
+
+    <div id="trainee-detail-view">
+        <!-- Populated dynamically via app.js -->
+    </div>
+
+</div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       TAB 3: TRAINING PROVIDER INTERFACE
+       ========================================================================= -->
+  <div id="tab-provider-portal" class="tab-content-panel">
+    <div class="app-container">
+      <div class="section-header-block">
+        <div>
+          <h2 class="section-title">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+            Training Provider Interface
+          </h2>
+          <p class="section-subtitle">Training Partner Centers &bull; Batch Enrolments &bull; Verified Outcome Submissions</p>
+        </div>
+      </div>
+
+      <!-- =========================================================
+     TRAINEE RECORD SEARCH
+========================================================= -->
+
+<div class="provider-trainee-search-card">
+
+    <div class="provider-search-header">
+
+        <div>
+            <h3 class="provider-search-title">
+                Search Trainee Record
+            </h3>
+
+            <p class="provider-search-subtitle">
+                Enter the unique Trainee ID to access the complete training and outcome record.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="provider-search-row">
+
+        <div class="provider-search-input-wrapper">
+
+            <svg
+                class="provider-search-icon"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+            >
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z">
+                </path>
+            </svg>
+
+            <input
+                type="text"
+                id="provider-trainee-id-input"
+                class="provider-trainee-id-input"
+                placeholder="Enter Trainee ID e.g. SOL-26#849201"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <button
+            type="button"
+            id="provider-trainee-search-btn"
+            class="btn-primary provider-search-btn"
+        >
+            Search Record
+        </button>
+
+    </div>
+
+
+    <div
+        id="provider-trainee-search-message"
+        class="provider-search-message"
+    ></div>
+
+</div>
+
+
+<!-- =========================================================
+     TRAINEE RECORD RESULT
+========================================================= -->
+
+<div
+    id="provider-trainee-result"
+    class="provider-trainee-result"
+>
+    <div class="provider-empty-state">
+
+        <div class="provider-empty-icon">
+            🔎
+        </div>
+
+        <h3>Search for a Trainee</h3>
+
+        <p>
+            Enter a valid Trainee ID above to view their
+            complete training, assessment, employment and
+            follow-up information.
+        </p>
+
+    </div>
+</div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       TAB 4: POLICY AND ADMIN (DYNAMIC MULTI-COURSE AI ANALYSIS & SKILL GAP)
+       ========================================================================= -->
+  <div id="tab-policy-admin" class="tab-content-panel">
+    <div class="app-container">
+      <div class="section-header-block">
+        <div>
+          <h2 class="section-title">
+            <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+            Admin Dashboard
+          </h2>
+          <p class="section-subtitle">Automated Follow-Up Engine &bull; AI Outcome Intelligence &bull; Skill Gap Analysis &bull; Retention Analysis </p>
+        </div>
+      </div>
+        <!-- =========================================================
+     ADMIN DASHBOARD TAB NAVIGATION
+     ========================================================= -->
+
+<div class="admin-dashboard-tabs">
+
+    <button class="admin-tab-btn active"
+            data-admin-tab="overview">
+        Overview
+    </button>
+
+    <button class="admin-tab-btn"
+            data-admin-tab="wage-progression">
+        Wage Progression
+    </button>
+
+    <button class="admin-tab-btn"
+            data-admin-tab="retention-analysis">
+        Retention Analysis
+    </button>
+
+    <button class="admin-tab-btn"
+            data-admin-tab="skill-gap">
+        Skill Gap Analysis
+    </button>
+
+    <button class="admin-tab-btn"
+            data-admin-tab="outcome-diagnosis">
+        Outcome Diagnosis
+    </button>
+
+    <button class="admin-tab-btn"
+            data-admin-tab="course-provider">
+        Course & Provider Analysis
+    </button>
+
+</div>
+<!-- =========================================================
+     ADMIN TAB: OVERVIEW
+     ========================================================= -->
+
+<section id="admin-overview"
+         class="admin-analysis-section active">
+
+    <div class="admin-section-header">
+
+        <div>
+            <span class="admin-section-eyebrow">
+                NATIONAL SKILL OUTCOME INTELLIGENCE
+            </span>
+
+            <h2>Programme Overview</h2>
+
+            <p>
+                Monitor training, employment and livelihood
+                outcomes across skill development programmes.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="admin-overview-grid">
+
+        <div class="admin-stat-card">
+            <span>Total Trainees</span>
+            <strong id="admin-total-trainees">0</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <span>Employment Rate</span>
+            <strong id="admin-employment-rate">0%</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <span>Retention Rate</span>
+            <strong id="admin-retention-rate">0%</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <span>Average Wage</span>
+            <strong id="admin-average-wage">₹0</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADMIN TAB: WAGE PROGRESSION
+     ========================================================= -->
+
+<section id="admin-wage-progression"
+         class="admin-analysis-section">
+
+    <div class="admin-section-header">
+
+        <div>
+            <span class="admin-section-eyebrow">
+                LONGITUDINAL OUTCOME
+            </span>
+
+            <h2>Wage Progression</h2>
+
+            <p>
+                Analyse how trainee wages change after training
+                and employment.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="wage-kpi-grid">
+
+        <div class="wage-kpi-card">
+            <span>Average Starting Wage</span>
+            <strong id="avg-starting-wage">₹0</strong>
+            <small>At first employment</small>
+        </div>
+
+        <div class="wage-kpi-card">
+            <span>Average Current Wage</span>
+            <strong id="avg-current-wage">₹0</strong>
+            <small>Latest verified wage</small>
+        </div>
+
+        <div class="wage-kpi-card">
+            <span>Average Wage Growth</span>
+            <strong id="avg-wage-growth">0%</strong>
+            <small>Since first employment</small>
+        </div>
+
+        <div class="wage-kpi-card">
+            <span>Trainees With Growth</span>
+            <strong id="trainees-with-wage-growth">0</strong>
+            <small>Positive progression</small>
+        </div>
+
+    </div>
+
+
+    <div class="wage-analysis-card">
+
+        <h3>Wage Progression Over Time</h3>
+
+        <p>
+            Average verified monthly wage across
+            post-training milestones.
+        </p>
+
+        <div class="wage-chart-container">
+            <canvas id="wage-progression-chart"></canvas>
+        </div>
+
+    </div>
+
+
+    <div class="wage-analysis-card">
+
+        <h3>Wage Progression by Course</h3>
+
+        <div class="wage-course-table-wrapper">
+
+            <table class="wage-course-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Course</th>
+                        <th>Starting Wage</th>
+                        <th>Current Wage</th>
+                        <th>Growth</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="wage-course-table-body">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <div class="wage-analysis-card">
+
+        <h3>Outcome Intelligence</h3>
+
+        <div id="wage-progression-insights"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADMIN TAB: RETENTION ANALYSIS
+     ========================================================= -->
+
+<section id="admin-retention-analysis"
+         class="admin-analysis-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="admin-section-eyebrow">
+                LONGITUDINAL RETENTION
+            </span>
+
+            <h2>Retention Analysis</h2>
+
+            <p>
+                Understand whether trainees remain employed
+                after placement.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="retention-kpi-grid">
+
+        <div class="admin-stat-card">
+            <span>3-Month Retention</span>
+            <strong id="retention-3-month">0%</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <span>6-Month Retention</span>
+            <strong id="retention-6-month">0%</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <span>12-Month Retention</span>
+            <strong id="retention-12-month">0%</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <span>Early Attrition</span>
+            <strong id="early-attrition-rate">0%</strong>
+        </div>
+
+    </div>
+
+
+    <div class="analysis-chart-card">
+
+        <h3>Employment Retention Curve</h3>
+
+        <p>
+            Percentage of employed trainees remaining
+            in employment over time.
+        </p>
+
+        <div class="analysis-chart-container">
+            <canvas id="retention-chart"></canvas>
+        </div>
+
+    </div>
+
+
+    <div class="analysis-chart-card">
+
+        <h3>Why Are Trainees Leaving?</h3>
+
+        <div class="attrition-reasons-grid"
+             id="attrition-reasons-container">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADMIN TAB: SKILL GAP
+     ========================================================= -->
+
+<section id="admin-skill-gap"
+         class="admin-analysis-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="admin-section-eyebrow">
+                INDUSTRY VS TRAINING SUPPLY
+            </span>
+
+            <h2>Skill Gap Analysis</h2>
+
+            <p>
+                Identify skills where industry demand exceeds
+                current training supply.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="skill-gap-summary-grid">
+
+        <div class="admin-stat-card">
+            <span>Critical Skill Gaps</span>
+            <strong id="critical-skill-gaps">0</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <span>High Demand Skills</span>
+            <strong id="high-demand-skills">0</strong>
+        </div>
+
+        <div class="admin-stat-card">
+            <span>Oversupplied Areas</span>
+            <strong id="oversupplied-skills">0</strong>
+        </div>
+
+    </div>
+
+
+    <div class="analysis-table-card">
+
+        <h3>Industry Demand vs Training Supply</h3>
+
+        <table class="skill-gap-table">
+
+            <thead>
+
+                <tr>
+                    <th>Skill / Sector</th>
+                    <th>Industry Demand</th>
+                    <th>Training Supply</th>
+                    <th>Gap</th>
+                    <th>Status</th>
+                    <th>Policy Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="skill-gap-table-body">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADMIN TAB: OUTCOME DIAGNOSIS
+     ========================================================= -->
+
+<section id="admin-outcome-diagnosis"
+         class="admin-analysis-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="admin-section-eyebrow">
+                OUTCOME INTELLIGENCE
+            </span>
+
+            <h2>Outcome Diagnosis</h2>
+
+            <p>
+                Investigate why training programmes succeed,
+                underperform or fail to create sustainable
+                livelihoods.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="diagnosis-selector">
+
+        <label for="diagnosis-course-select">
+            Select Course
+        </label>
+
+        <select id="diagnosis-course-select">
+            <option value="">Select a course</option>
+        </select>
+
+    </div>
+
+
+    <div id="outcome-diagnosis-container">
+
+        <!-- Generated dynamically -->
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADMIN TAB: COURSE & PROVIDER ANALYSIS
+     ========================================================= -->
+
+<section id="admin-course-provider"
+         class="admin-analysis-section">
+
+    <div class="admin-section-header">
+
+        <div>
+
+            <span class="admin-section-eyebrow">
+                PROGRAMME PERFORMANCE
+            </span>
+
+            <h2>Course & Provider Analysis</h2>
+
+            <p>
+                Compare training programmes and providers
+                using outcome indicators.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="provider-analysis-grid">
+
+        <div class="analysis-table-card">
+
+            <h3>Course Performance</h3>
+
+            <table class="provider-analysis-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Course</th>
+                        <th>Completion</th>
+                        <th>Employment</th>
+                        <th>Self-Employment</th>
+                        <th>Unemployed</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="course-performance-body">
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="analysis-table-card">
+
+            <h3>Training Provider Performance</h3>
+
+            <table class="provider-analysis-table">
+
+                <thead>
+
+                    <tr>
+                        <th>Provider</th>
+                        <th>Trained</th>
+                        <th>Placement</th>
+                        <th>Avg Wage</th>
+                        <th>Rating</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="provider-performance-body">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+      
+<!-- ADMIN OVERVIEW TAB -->
+<div id="admin-overview" class="admin-subtab-panel active">
+    
+
+      <!-- =====================================================================
+           AUTOMATED OUTCOME TRACKING (FOLLOW-UP ENGINE)
+           ===================================================================== -->
+      <div class="section-header-block" style="margin-bottom:16px;">
+        <div>
+          <h3 class="section-title" style="font-size:1.3rem;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            Automated Outcome Tracking & Follow-Up System
+          </h3>
+          <p class="section-subtitle">Multi-channel cadence (30d, 90d, 180d, 365d, 2yr, 5yr) — SMS / WhatsApp / IVR / Assisted Field Verification</p>
+        </div>
+      </div>
+
+      <div class="policy-grid-2col" style="margin-bottom:28px;">
+        <div class="policy-card">
+          <h4 class="policy-card-title">📞 Automated Government Follow-Up Engine</h4>
+          <div class="policy-card-desc">Scheduled multi-channel verification post-training completion</div>
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:0.875rem; color:var(--text-secondary);">
+            <div style="background:#f8fafc; padding:10px; border-radius:6px; border:1px solid #e2e8f0;">
+              <strong>1. Digital Follow-up:</strong> Automated SMS and WhatsApp messages sent at <strong>30 Days</strong> (Did you get employment?), <strong>90 Days</strong> (Current job &amp; wage), <strong>180 Days</strong> (Still employed or not?), <strong>365 Days</strong>, <strong>2 Years</strong> &amp; <strong>5 Years</strong>.
+            </div>
+            <div style="background:#fffbeb; padding:10px; border-radius:6px; border:1px solid #fde68a;">
+              <strong>2. IVR Call Assisted (Voice Response):</strong> For candidates who do not respond digitally, an automated IVR call asks: <em>"Press 1 if Employed, Press 2 if Self-Employed, Press 3 if Unemployed"</em>.
+            </div>
+            <div style="background:#f0fdf4; padding:10px; border-radius:6px; border:1px solid #bbf7d0;">
+              <strong>3. Assisted Field Verification:</strong> If digital and IVR contact fails, District Skilling Officers perform field audit verification under government protocol.
+            </div>
+          </div>
+        </div>
+
+        <div class="policy-card">
+          <h4 class="policy-card-title">📊 National Follow-Up Summary (Current Cycle)</h4>
+          <div class="policy-card-desc">Aggregated response rates & employment outcomes across all active cohorts</div>
+          <div id="follow-up-summary-view">
+            <!-- Populated via app.js -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
+              <div style="background:#eff6ff; padding:10px; border-radius:8px; text-align:center;">
+                <div style="font-size:1.4rem; font-weight:800; color:#1d4ed8;">88.2%</div>
+                <div style="font-size:0.72rem; color:#3b82f6; font-weight:600;">30-Day Response Rate</div>
+              </div>
+              <div style="background:#f0fdf4; padding:10px; border-radius:8px; text-align:center;">
+                <div style="font-size:1.4rem; font-weight:800; color:#16a34a;">69.4%</div>
+                <div style="font-size:0.72rem; color:#16a34a; font-weight:600;">Verified Employed @ 30d</div>
+              </div>
+              <div style="background:#fef3c7; padding:10px; border-radius:8px; text-align:center;">
+                <div style="font-size:1.4rem; font-weight:800; color:#92400e;">32%</div>
+                <div style="font-size:0.72rem; color:#b45309; font-weight:600;">Left Job Within 6 Months</div>
+              </div>
+              <div style="background:#faf5ff; padding:10px; border-radius:8px; text-align:center;">
+                <div style="font-size:1.4rem; font-weight:800; color:#7c3aed;">61%</div>
+                <div style="font-size:0.72rem; color:#7c3aed; font-weight:600;">12-Month Retention Rate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr style="border:none; border-top:2px dashed var(--border-color); margin-bottom:28px;">
+
+      <!-- Course Selection Toolbar for AI Outcome Analysis -->
+      <div class="course-selector-bar">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="font-weight:700; color:var(--gov-navy); font-size:0.9375rem;">Select Course for AI Analysis:</span>
+          <select id="ai-course-select" class="form-select" style="font-weight:700; width:auto; min-width:320px;">
+            <!-- Populated via app.js -->
+          </select>
+        </div>
+        <span class="role-badge" style="background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe;">
+          ⚡ Live AI Diagnosis Engine
+        </span>
+      </div>
+
+      <!-- Dynamic Course Cohort Stats Container -->
+      <div id="ai-cohort-stats-view">
+        <!-- Populated via app.js -->
+      </div>
+
+      <!-- Dynamic AI Insight Cards Container (Course-specific findings & recommendations) -->
+      <div class="section-header-block" style="margin-top: 10px; margin-bottom: 16px;">
+        <div>
+          <h3 class="section-title" style="font-size:1.3rem;">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            Course-Specific AI Diagnoses & Discoveries
+          </h3>
+          <p class="section-subtitle">Analyzes early job retention exits, regional variance, gender patterns, and skill prerequisites for the selected course</p>
+        </div>
+      </div>
+
+      <div id="ai-insights-container" class="ai-insights-grid">
+        <!-- Populated dynamically via app.js -->
+      </div>
+
+      <!-- =====================================================================
+           SKILL GAP ANALYSIS SECTION (MARKET DEMAND VS TRAINING SUPPLY)
+           ===================================================================== -->
+      <div class="section-header-block" style="margin-top: 36px;">
+        <div>
+          <h3 class="section-title" style="font-size:1.4rem;">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            Skill Gap Analysis (Industry Demand vs Training Supply)
+          </h3>
+          <p class="section-subtitle">Identifies critical supply deficits in emerging high-growth trades and oversupply in saturated legacy vocations</p>
+        </div>
+      </div>
+
+      <!-- Skill Gap Comparison Table -->
+      <div class="skill-gap-table-wrapper">
+        <table class="skill-gap-table">
+          <thead>
+            <tr>
+              <th>Sector / Trade Domain</th>
+              <th>Industry Demand</th>
+              <th>Training Supply</th>
+              <th>Deficit / Gap Index</th>
+              <th>Impacted Districts</th>
+              <th>Actionable Policy Directive</th>
+            </tr>
+          </thead>
+          <tbody id="skill-gap-table-body">
+            <!-- Populated via app.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Skill Gap & Retention Charts Grid -->
+      <div class="policy-grid-2col" style="margin-top: 24px;">
+        <div class="policy-card">
+          <div class="policy-card-title">
+            <span>Demand vs Supply Comparison</span>
+            <span class="role-badge" style="background:#eff6ff; color:#1d4ed8;">National Index</span>
+          </div>
+          <p class="policy-card-desc">Comparing industrial recruitment demand vs annual trained graduate supply.</p>
+          <div class="chart-container-box">
+            <canvas id="skillGapBarChart"></canvas>
+          </div>
+        </div>
+
+        <div class="policy-card">
+          <div class="policy-card-title">
+            <span>Longitudinal Retention Curves (M0 to M36)</span>
+            <span class="role-badge" style="background:#fef3c7; color:#92400e;">Retention Horizon</span>
+          </div>
+          <p class="policy-card-desc">Tracking post-training candidate employment retention across key sectors.</p>
+          <div class="chart-container-box">
+            <canvas id="retentionCurveChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- =========================================================================
+       ROLE SELECTION MODAL
+       ========================================================================= -->
+  <div id="role-selection-modal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Select Portal Interface & Role</h3>
+        <button class="modal-close-btn" onclick="closeModal('role-selection-modal')">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-size:0.875rem; color:var(--text-secondary); margin-bottom:18px;">
+          Choose your interface to navigate with role-appropriate permissions:
+        </p>
+
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div class="role-choice-card" onclick="setUserRole('trainee')">
+            <div class="role-icon-box">👤</div>
+            <div>
+              <h4 style="color:var(--gov-navy); font-size:1rem; font-weight:700;">1. Trainee Interface</h4>
+              <p style="font-size:0.8125rem; color:var(--text-secondary); margin-top:2px;">
+                For candidates to register, view personal training records, and track automated follow-up status. Restricted from provider & admin views.
+              </p>
+            </div>
+          </div>
+
+          <div class="role-choice-card" onclick="setUserRole('provider')">
+            <div class="role-icon-box">🏢</div>
+            <div>
+              <h4 style="color:var(--gov-navy); font-size:1rem; font-weight:700;">2. Training Provider Interface</h4>
+              <p style="font-size:0.8125rem; color:var(--text-secondary); margin-top:2px;">
+                For accredited training centers to manage student rosters, record batch completions, and view placement audits.
+              </p>
+            </div>
+          </div>
+
+          <div class="role-choice-card" onclick="setUserRole('admin')">
+            <div class="role-icon-box">🏛️</div>
+            <div>
+              <h4 style="color:var(--gov-navy); font-size:1rem; font-weight:700;">3. Admin Dashboard (Supreme)</h4>
+              <p style="font-size:0.8125rem; color:var(--text-secondary); margin-top:2px;">
+                Full administrative authority for Ministry and State Skill Missions. Access to all interfaces, AI diagnostics, and Skill Gap Analysis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 1: REGISTER NEW TRAINEE
+       ========================================================================= -->
+  <div id="register-trainee-modal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Register Trainee</h3>
+        <button class="modal-close-btn" onclick="closeModal('register-trainee-modal')">&times;</button>
+      </div>
+
+      <form id="register-trainee-form">
+        <div class="modal-body">
+          <div class="form-group" style="background:#eff6ff; padding:12px 16px; border-radius:8px; border:1px solid #bfdbfe;">
+            <label class="form-label" style="color:#1e40af;">System-Generated Persistent Trainee ID:</label>
+            <div style="display:flex; gap:10px; align-items:center;">
+              <select id="reg-sector-code" class="form-select" style="width:130px; font-weight:700;">
+                <option value="SKL">SKL (General)</option>
+                <option value="SOL">SOL (Solar)</option>
+                <option value="ELC">ELC (Electronics)</option>
+                <option value="IT">IT (Digital)</option>
+                <option value="HLT">HLT (Health)</option>
+                <option value="MFG">MFG (Machining)</option>
+              </select>
+              <input type="text" id="reg-trainee-id" class="form-input" readonly style="font-family:monospace; font-weight:800; color:#1e3a8a; background:#ffffff;">
+            </div>
+            <div style="font-size:0.75rem; color:#3b82f6; margin-top:4px;">
+              ⚡ Permanent ID format: <code>[SECTOR]-26#[RANDOM]</code>. Persists across all future courses.
+            </div>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Full Name of Trainee *</label>
+              <input type="text" id="reg-name" class="form-input" required placeholder="e.g. Priya Sharma">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Age (Years) *</label>
+              <input type="number" id="reg-age" class="form-input" min="16" max="60" value="22" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Gender *</label>
+              <select id="reg-gender" class="form-select">
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Socio-Economic Category *</label>
+              <select id="reg-category" class="form-select">
+                <option value="General">General</option>
+                <option value="OBC">OBC</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+                <option value="EWS">EWS</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">State *</label>
+              <input type="text" id="reg-state" class="form-input" value="Uttar Pradesh" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">District *</label>
+              <input type="text" id="reg-district" class="form-input" value="Gautam Buddha Nagar" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Highest Education</label>
+              <input type="text" id="reg-education" class="form-input" value="12th Science / ITI">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mobile Number *</label>
+              <input type="tel" id="reg-contact" class="form-input" value="+91 98112 00000" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Registered Email</label>
+            <input type="email" id="reg-email" class="form-input" value="trainee.candidate@email.gov.in">
+          </div>
+
+          <hr style="margin: 16px 0; border: none; border-top: 1px solid var(--border-color);">
+          <h4 style="font-size:0.9375rem; color:var(--gov-navy); margin-bottom:10px;">Initial Course Enrollment Details:</h4>
+
+          <div class="form-group">
+            <label class="form-label">Course / Trade Name *</label>
+            <input type="text" id="reg-course-name" class="form-input" value="Solar PV Rooftop Technician (NSQF Level 4)" required>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Skilling Scheme *</label>
+              <select id="reg-scheme" class="form-select">
+                <option>PMKVY 4.0 (Pradhan Mantri Kaushal Vikas Yojana)</option>
+                <option>DDU-GKY (Deen Dayal Upadhyaya Grameen Kaushalya)</option>
+                <option>NAPS (National Apprenticeship Promotion Scheme)</option>
+                <option>PM-Vishwakarma Yojana</option>
+                <option>STRIVE (Industrial Skill Strengthening)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Training Center / Provider *</label>
+              <input type="text" id="reg-provider" class="form-input" value="National Skill Training Institute (NSTI), Noida">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Batch ID</label>
+            <input type="text" id="reg-batch-id" class="form-input" value="BATCH-2026-Q1-09">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" onclick="closeModal('register-trainee-modal')">Cancel</button>
+          <button type="submit" class="btn-primary">Register & Generate ID</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: ADD COURSE TO EXISTING TRAINEE (1:N MULTI-TRAINING)
+       ========================================================================= -->
+  <div id="add-course-modal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Course to Trainee Record</h3>
+        <button class="modal-close-btn" onclick="closeModal('add-course-modal')">&times;</button>
+      </div>
+
+      <form id="add-course-form">
+        <div class="modal-body">
+          <div style="background:#f0fdf4; border:1px solid #bbf7d0; padding:12px; border-radius:8px; margin-bottom:16px;">
+            <div style="font-size:0.875rem; color:#166534; font-weight:700;">
+              Attaching course to: <span id="add-course-trainee-name">Trainee</span>
+            </div>
+            <div style="font-size:0.75rem; color:#15803d; font-family:monospace; margin-top:2px;">
+              Permanent Trainee ID: <strong id="add-course-trainee-id">SKL-26#XXXXXX</strong>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Course / Trade Name *</label>
+            <input type="text" id="add-course-name" class="form-input" value="Advanced Industrial IoT & Sensor Automation (NSQF Level 5)" required>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Skilling Scheme</label>
+              <select id="add-course-scheme" class="form-select">
+                <option>STRIVE (Skills Strengthening for Industrial Value)</option>
+                <option>PMKVY 4.0 (Special Upskilling Window)</option>
+                <option>NAPS (National Apprenticeship Scheme)</option>
+                <option>State Skill Development Mission (SSDM)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Training Center Name</label>
+              <input type="text" id="add-course-provider" class="form-input" value="Don Bosco Skill Mission Center">
+            </div>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">District</label>
+              <input type="text" id="add-course-district" class="form-input" value="Pune">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Batch ID</label>
+              <input type="text" id="add-course-batch-id" class="form-input" value="DB-IIOT-2026-B2">
+            </div>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Attendance Rate (%)</label>
+              <input type="number" id="add-course-attendance" class="form-input" value="95" min="0" max="100">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Assessment Score (%)</label>
+              <input type="number" id="add-course-score" class="form-input" value="91" min="0" max="100">
+            </div>
+          </div>
+
+          <div class="form-grid-2col">
+            <div class="form-group">
+              <label class="form-label">Certification Status</label>
+              <select id="add-course-cert-status" class="form-select">
+                <option>Certified (Distinction)</option>
+                <option>Certified (Grade A)</option>
+                <option>Certified (Grade B)</option>
+                <option>In Progress</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Employment Status</label>
+              <select id="add-course-emp-outcome" class="form-select">
+                <option>Formal Wage Employment</option>
+                <option>Self-Employed Entrepreneur</option>
+                <option>Industrial Apprenticeship</option>
+                <option>Higher Education</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" onclick="closeModal('add-course-modal')">Cancel</button>
+          <button type="submit" class="btn-primary">Add Course to Record</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Government Portal Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Skill Outcome Intelligence Portal (SOIP)</h4>
+          <p style="font-size:0.875rem; line-height:1.6; color:#94a3b8; margin-bottom:14px;">
+            A National Longitudinal Outcome Tracking and Skilling Diagnostics System developed for the Ministry of Skill Development and Entrepreneurship.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Interfaces</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" onclick="switchTab('trainee-portal')">Trainee Interface</a></li>
+            <li><a href="javascript:void(0)" onclick="switchTab('provider-portal')">Training Provider Interface</a></li>
+            <li><a href="javascript:void(0)" onclick="switchTab('policy-admin')">Admin Dashboard</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow-Up Channels</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)">📱 Automated SMS / WhatsApp</a></li>
+            <li><a href="javascript:void(0)">📞 IVR Voice Assisted (1/2/3)</a></li>
+            <li><a href="javascript:void(0)">🚶 Assisted Field Verification</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Project Details</h4>
+          <p style="font-size:0.875rem; color:#94a3b8; line-height:1.5;">
+            Smart India Hackathon (SIH 2026) &bull; Outcome Intelligence System
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Ministry of Skill Development and Entrepreneurship, Government of India.
+        </div>
+        <div>
+          Skill Outcome Intelligence System
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script src="data.js?v=2.2"></script>
+  <script src="app.js?v=2.2"></script>
+</body>
+</html>

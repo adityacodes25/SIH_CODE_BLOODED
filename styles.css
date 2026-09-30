@@ -1,0 +1,2429 @@
+/* ==========================================================================
+   SKILL OUTCOME INTELLIGENCE PORTAL (SOIP) - SIH 2026
+   Official Government of India Web Design System
+   ========================================================================== */
+
+:root {
+  /* Government & Brand Colors */
+  --gov-navy-dark: #002244;
+  --gov-navy: #003366;
+  --gov-blue-primary: #1a56db;
+  --gov-blue-hover: #1e429f;
+  --gov-blue-light: #ebf5ff;
+  --gov-saffron: #ff9933;
+  --gov-green: #138808;
+  --gov-gold: #f59e0b;
+
+  /* UI Neutrals */
+  --bg-main: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --border-color: #e2e8f0;
+  --border-focus: #3b82f6;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-light: #f8fafc;
+
+  /* Status Colors */
+  --success: #10b981;
+  --success-bg: #ecfdf5;
+  --warning: #f59e0b;
+  --warning-bg: #fffbeb;
+  --danger: #ef4444;
+  --danger-bg: #fef2f2;
+  --info: #0284c7;
+  --info-bg: #f0f9ff;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-card: 0 8px 24px -4px rgba(15, 23, 42, 0.08);
+
+  /* Typography & Layout */
+  --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', 'Inter', system-ui, sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+  --base-font-size: 16px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* High Contrast Accessibility Mode */
+body.high-contrast {
+  --bg-main: #000000;
+  --bg-surface: #121212;
+  --bg-subtle: #222222;
+  --border-color: #ffffff;
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #cbd5e1;
+  --gov-navy-dark: #000000;
+  --gov-navy: #0b1f3a;
+  --gov-blue-primary: #60a5fa;
+  --gov-blue-light: #1e3a8a;
+  --shadow-card: 0 0 0 2px #ffffff;
+}
+
+/* Reset & Defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--base-font-size);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tricolor Top Accent Line */
+.tricolor-stripe {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #ff9933 0%, #ff9933 33.33%, #ffffff 33.33%, #ffffff 66.66%, #138808 66.66%, #138808 100%);
+}
+
+/* ==========================================================================
+   TOP ACCESSIBILITY & GOV HEADER BAR
+   ========================================================================== */
+.gov-top-bar {
+  background-color: #f1f5f9;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  padding: 4px 0;
+}
+
+.gov-top-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gov-org-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.gov-accessibility-tools {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.a11y-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-secondary);
+  background-color: var(--bg-surface);
+  transition: var(--transition);
+}
+
+.a11y-btn:hover {
+  background-color: var(--gov-blue-light);
+  color: var(--gov-blue-primary);
+  border-color: var(--gov-blue-primary);
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--gov-navy);
+}
+
+/* Current Role Indicator Pill */
+.active-role-pill {
+  background: #eff6ff;
+  border: 1.5px solid #bfdbfe;
+  color: #1e40af;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.active-role-pill:hover {
+  background: #dbeafe;
+}
+
+/* ==========================================================================
+   MAIN NAVIGATION HEADER
+   ========================================================================== */
+.main-header {
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 1px 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.national-emblem {
+  height: 52px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  margin-left:70px;
+  margin-top:-70px;
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--gov-blue-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 0px;
+  margin-top: 10px;
+}
+
+.nav-item-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-family);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.nav-item-btn:hover {
+  color: var(--gov-blue-primary);
+  background-color: var(--gov-blue-light);
+}
+
+.nav-item-btn.active {
+  color: var(--gov-blue-primary);
+  background-color: var(--gov-blue-light);
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.role-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background-color: #ecfdf5;
+  color: #065f46;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #a7f3d0;
+}
+
+.btn-primary {
+  background-color: var(--gov-blue-primary);
+  color: #ffffff;
+  border: none;
+  padding: 9px 20px;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--gov-blue-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(26, 86, 219, 0.3);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1.5px solid var(--border-color);
+  padding: 8px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  border-color: var(--gov-blue-primary);
+  color: var(--gov-blue-primary);
+  background-color: var(--gov-blue-light);
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8125rem;
+}
+
+/* ==========================================================================
+   HERO SECTION (PIXEL-PERFECT MATCH TO REFERENCE IMAGE)
+   ========================================================================== */
+.hero-section {
+  background: radial-gradient(circle at 80% 30%, rgba(219, 234, 254, 0.45) 0%, rgba(248, 250, 252, 0.9) 70%);
+  padding: 48px 0 40px 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-background-lines {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  opacity: 0.15;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at center, #2563eb 1.5px, transparent 1.5px),
+    linear-gradient(to right, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px, 32px 32px, 32px 32px;
+}
+
+.hero-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.gov-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 20px;
+}
+
+.gov-badge-pill svg {
+  color: #2563eb;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1.08;
+  color: #0b1f3a;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 580px;
+  margin-bottom: 30px;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Trainee Diamond Collage */
+.hero-visual-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 420px;
+}
+
+.diamond-collage {
+  position: relative;
+  width: 380px;
+  height: 380px;
+}
+
+.diamond-card {
+  position: absolute;
+  overflow: hidden;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.15);
+  border: 3px solid #ffffff;
+  transition: transform 0.4s ease;
+}
+
+.diamond-card:hover {
+  transform: scale(1.04) rotate(0deg) !important;
+  z-index: 10;
+}
+
+.diamond-primary {
+  width: 220px;
+  height: 220px;
+  top: 10px;
+  right: 15px;
+  border-radius: 40px 12px 40px 12px;
+  transform: rotate(4deg);
+  z-index: 3;
+}
+
+.diamond-secondary {
+  width: 175px;
+  height: 175px;
+  bottom: 35px;
+  left: 10px;
+  border-radius: 12px 35px 12px 35px;
+  transform: rotate(-6deg);
+  z-index: 2;
+}
+
+.diamond-tertiary {
+  width: 170px;
+  height: 170px;
+  bottom: 10px;
+  right: 40px;
+  border-radius: 35px 12px 35px 12px;
+  transform: rotate(6deg);
+  z-index: 2;
+}
+
+.diamond-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.floating-verified-badge {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #065f46;
+  border: 1px solid #d1fae5;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+/* ==========================================================================
+   KEY STATS CARDS SECTION (4 CARDS FROM MOCKUP)
+   ========================================================================== */
+.stats-section {
+  max-width: 1320px;
+  margin: -25px auto 40px auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -4px rgba(37, 99, 235, 0.15);
+  border-color: #bfdbfe;
+}
+
+.stat-icon-wrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   DARK BLUE FEATURE RIBBON (FROM MOCKUP)
+   ========================================================================== */
+.feature-ribbon-section {
+  background-color: var(--gov-navy-dark);
+  color: #ffffff;
+  padding: 28px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-ribbon-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.ribbon-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.ribbon-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #60a5fa;
+  flex-shrink: 0;
+}
+
+.ribbon-text h4 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.ribbon-text p {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   PORTAL TABS & CONTENT CONTAINER
+   ========================================================================== */
+.app-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 36px 20px 60px 20px;
+  flex: 1;
+  width: 100%;
+}
+
+.tab-content-panel {
+  display: none;
+}
+
+.tab-content-panel.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-header-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1.5px solid var(--border-color);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   TRAINEE PORTAL STYLES (PERSISTENT ID + AUTOMATED FOLLOW-UPS)
+   ========================================================================== */
+.trainee-portal-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.trainee-sidebar-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+}
+
+.search-box-wrapper {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  font-size: 0.875rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-subtle);
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+}
+
+.search-input:focus {
+  border-color: var(--gov-blue-primary);
+  background-color: var(--bg-surface);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.search-icon-pos {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.trainee-list-container {
+  max-height: 520px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 4px;
+}
+
+.trainee-item-card {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color);
+  background-color: var(--bg-surface);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trainee-item-card:hover {
+  border-color: #93c5fd;
+  background-color: #f8fafc;
+}
+
+.trainee-item-card.selected {
+  border-color: var(--gov-blue-primary);
+  background-color: var(--gov-blue-light);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.15);
+}
+
+.trainee-avatar-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.trainee-meta-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.trainee-meta-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trainee-meta-id {
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gov-blue-primary);
+  display: inline-block;
+  background-color: rgba(37, 99, 235, 0.08);
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin: 2px 0;
+}
+
+.trainee-meta-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Detailed Trainee Profile View */
+.trainee-detail-wrapper {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  padding: 28px;
+}
+
+.profile-header-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 24px;
+}
+
+.profile-identity {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.profile-photo-large {
+  width: 84px;
+  height: 84px;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+  border: 3px solid #bfdbfe;
+  box-shadow: var(--shadow-md);
+}
+
+.profile-title-block h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+  line-height: 1.2;
+}
+
+.persistent-id-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: var(--radius-md);
+  font-family: monospace;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 6px 0;
+  box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2);
+}
+
+.demographics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  background-color: var(--bg-subtle);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  margin-bottom: 28px;
+}
+
+.demo-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.demo-val {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 2px;
+}
+
+/* Longitudinal Multi-Training History Timeline */
+.timeline-section-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.training-timeline-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  padding: 16px;
+  border-radius: var(--radius-md);
+}
+
+.followup-step-item {
+  display: grid;
+  grid-template-columns: 140px 1fr 180px;
+  gap: 14px;
+  align-items: center;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+}
+
+.followup-channel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.followup-channel-badge.ivr {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.followup-channel-badge.field {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+
+/* ==========================================================================
+   AI OUTCOME DIAGNOSIS & 32% RETENTION CLIFF BOXES
+   ========================================================================== */
+.ai-cohort-summary-card {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.cohort-stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.cohort-metric-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  text-align: center;
+}
+
+.cohort-metric-val {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.cohort-metric-lbl {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* The 32% Retention Cliff Alert Banner */
+.retention-cliff-alert {
+  border-left: 5px solid #ef4444;
+  background: #fff5f5;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 20px 24px;
+  border-top: 1px solid #fee2e2;
+  border-right: 1px solid #fee2e2;
+  border-bottom: 1px solid #fee2e2;
+  margin-bottom: 24px;
+}
+
+.cliff-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cliff-badge {
+  background: #ef4444;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.04em;
+}
+
+.cliff-metric {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #991b1b;
+}
+
+/* ==========================================================================
+   ROLE SELECTION MODAL & GATE
+   ========================================================================== */
+.role-choice-card {
+  padding: 18px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.role-choice-card:hover {
+  border-color: var(--gov-blue-primary);
+  background: var(--gov-blue-light);
+  transform: translateY(-2px);
+}
+
+.role-icon-box {
+  font-size: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   MODAL WINDOWS & FORMS
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-backdrop.active {
+  display: flex;
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-dialog {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-color);
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.form-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  outline: none;
+  transition: var(--transition);
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--gov-blue-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-color);
+  background-color: #f8fafc;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+/* ==========================================================================
+   FOOTER (GOVERNMENT STANDARD)
+   ========================================================================== */
+.main-footer {
+  background-color: #0a192f;
+  color: #cbd5e1;
+  padding: 48px 0 20px 0;
+  border-top: 4px solid var(--gov-saffron);
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-col h4 {
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--gov-saffron);
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .hero-title {
+    font-size: 2.6rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .feature-ribbon-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trainee-portal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cohort-stat-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-ribbon-container {
+    grid-template-columns: 1fr;
+  }
+
+  .demographics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .followup-step-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .header-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   PERSONAL SKILL GAP & CAREER READINESS
+   ========================================================= */
+
+#trainee-skill-gap-container {
+  width: 100%;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+
+/* MAIN CARD */
+
+.skill-gap-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #dbe4ee;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+
+
+/* HEADER */
+
+.skill-gap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 26px;
+  background: linear-gradient(
+    135deg,
+    #f8fbff 0%,
+    #eef6ff 100%
+  );
+  border-bottom: 1px solid #dbe4ee;
+}
+
+.skill-gap-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #2563eb;
+  margin-bottom: 5px;
+}
+
+.skill-gap-header h3 {
+  margin: 0;
+  color: #0f2747;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.skill-gap-header p {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+
+/* CAREER READINESS */
+
+.career-readiness-badge {
+  min-width: 120px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid;
+  flex-shrink: 0;
+}
+
+.readiness-number {
+  display: block;
+  font-size: 1.65rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.readiness-label {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+
+/* READINESS STATES */
+
+.readiness-good {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #047857;
+}
+
+.readiness-warning {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #b45309;
+}
+
+.readiness-critical {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+
+/* TRAINING PATHWAY */
+
+.skill-gap-course {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 16px 26px;
+  background: #fafcff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.skill-gap-course span {
+  font-size: 0.67rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+}
+
+.skill-gap-course strong {
+  font-size: 0.84rem;
+  color: #1e293b;
+}
+
+
+/* TABLE */
+
+.skill-gap-table {
+  width: 100%;
+}
+
+.skill-gap-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 2fr) 1fr 1fr 0.8fr;
+  align-items: center;
+  gap: 16px;
+  padding: 13px 26px;
+  border-bottom: 1px solid #edf2f7;
+}
+
+.skill-gap-heading {
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.skill-gap-row:not(.skill-gap-heading) {
+  font-size: 0.8rem;
+  color: #334155;
+}
+
+.skill-gap-name {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+}
+
+.skill-status-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.skill-gap-level {
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.skill-gap-required {
+  font-weight: 700;
+  color: #64748b;
+}
+
+.skill-gap-difference {
+  font-weight: 800;
+}
+
+.gap-none {
+  color: #059669;
+  font-size: 0.72rem;
+}
+
+.gap-value {
+  color: #dc2626;
+}
+
+
+/* MAJOR GAPS */
+
+.major-gaps-section {
+  padding: 20px 26px;
+  background: #fbfdff;
+  border-top: 1px solid #e2e8f0;
+}
+
+.major-gaps-title {
+  margin-bottom: 12px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #0f2747;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.major-gaps-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.major-gap-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 9px;
+}
+
+.major-gap-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffedd5;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+
+.major-gap-item strong {
+  display: block;
+  font-size: 0.77rem;
+  color: #9a3412;
+}
+
+.major-gap-text {
+  margin-top: 4px;
+  font-size: 0.66rem;
+  line-height: 1.4;
+  color: #78716c;
+}
+
+.no-major-gap {
+  padding: 12px 14px;
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  color: #047857;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+
+/* RECOMMENDATION */
+
+.skill-recommendation {
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 20px 26px;
+  background: #f0f7ff;
+  border-top: 1px solid #dbeafe;
+}
+
+.recommendation-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.recommendation-content {
+  flex: 1;
+}
+
+.recommendation-label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #2563eb;
+  margin-bottom: 4px;
+}
+
+.recommendation-content h4 {
+  margin: 0;
+  color: #0f2747;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.recommendation-content p {
+  margin: 5px 0 9px;
+  color: #475569;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.recommendation-action {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 0.64rem;
+  font-weight: 800;
+}
+
+
+/* EMPTY STATE */
+
+.skill-gap-empty {
+  padding: 35px 25px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #dbe4ee;
+  border-radius: 14px;
+}
+
+.skill-gap-empty-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.skill-gap-empty h3 {
+  margin: 0;
+  color: #0f2747;
+  font-size: 1rem;
+}
+
+.skill-gap-empty p {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+  .skill-gap-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .career-readiness-badge {
+    width: 100%;
+  }
+
+  .major-gaps-list {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .skill-gap-row {
+    grid-template-columns: 1.7fr 0.8fr 0.8fr 0.7fr;
+    gap: 7px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .skill-gap-header,
+  .skill-gap-course,
+  .major-gaps-section,
+  .skill-recommendation {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .skill-gap-row {
+    font-size: 0.7rem;
+  }
+
+}
+
+.national-emblem {
+    width: 72px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.national-emblem {
+    width: 58px;
+    height: 78px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   ADMIN DASHBOARD TAB NAVIGATION
+   ========================================================= */
+
+.admin-dashboard-tabs {
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 6px;
+
+    margin-bottom: 24px;
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 12px;
+
+    overflow-x: auto;
+
+}
+
+
+.admin-tab-btn {
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    padding: 11px 16px;
+
+    border-radius: 8px;
+
+    font-size: 0.84rem;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+.admin-tab-btn:hover {
+
+    background: rgba(0, 51, 102, 0.06);
+
+    color: var(--text-primary);
+
+}
+
+
+.admin-tab-btn.active {
+
+    background: var(--primary);
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   ADMIN ANALYSIS SECTIONS
+   ========================================================= */
+
+.admin-analysis-section {
+
+    display: none;
+
+}
+
+
+.admin-analysis-section.active {
+
+    display: block;
+
+}
+
+
+.admin-section-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 24px;
+
+}
+
+
+.admin-section-eyebrow {
+
+    display: block;
+
+    font-size: 0.7rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    color: var(--primary);
+
+    margin-bottom: 6px;
+
+}
+
+
+.admin-section-header h2 {
+
+    margin: 0 0 6px;
+
+    font-size: 1.7rem;
+
+}
+
+
+.admin-section-header p {
+
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    max-width: 700px;
+
+}
+
+
+/* =========================================================
+   COMMON ADMIN CARDS
+   ========================================================= */
+
+.admin-overview-grid,
+.retention-kpi-grid,
+.skill-gap-summary-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.admin-stat-card {
+
+    padding: 20px;
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 12px;
+
+}
+
+
+.admin-stat-card span {
+
+    display: block;
+
+    color: var(--text-secondary);
+
+    font-size: 0.78rem;
+
+    margin-bottom: 8px;
+
+}
+
+
+.admin-stat-card strong {
+
+    font-size: 1.6rem;
+
+}
+
+
+/* =========================================================
+   COMMON ANALYSIS CARDS
+   ========================================================= */
+
+.analysis-chart-card,
+.analysis-table-card {
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: 12px;
+
+    padding: 22px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.analysis-chart-card h3,
+.analysis-table-card h3 {
+
+    margin-top: 0;
+
+    margin-bottom: 6px;
+
+}
+
+
+.analysis-chart-container {
+
+    position: relative;
+
+    height: 320px;
+
+    margin-top: 20px;
+
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.skill-gap-table,
+.provider-analysis-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+.skill-gap-table th,
+.skill-gap-table td,
+.provider-analysis-table th,
+.provider-analysis-table td {
+
+    padding: 12px;
+
+    border-bottom: 1px solid var(--border-color);
+
+    text-align: left;
+
+}
+
+
+.skill-gap-table th,
+.provider-analysis-table th {
+
+    font-size: 0.72rem;
+
+    color: var(--text-secondary);
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .admin-overview-grid,
+    .retention-kpi-grid,
+    .skill-gap-summary-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .admin-overview-grid,
+    .retention-kpi-grid,
+    .skill-gap-summary-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+/* ============================================================
+   ADMIN INTERNAL TABS
+   ============================================================ */
+
+.admin-subtabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 22px 0 28px;
+  padding: 6px;
+  background: #f1f5f9;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.admin-subtab {
+  border: none;
+  background: transparent;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-subtab:hover {
+  background: #ffffff;
+  color: var(--gov-navy);
+}
+
+.admin-subtab.active {
+  background: var(--gov-navy);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+}
+
+.admin-subtab-panel {
+  display: none;
+}
+
+.admin-subtab-panel.active {
+  display: block;
+  animation: fadeIn 0.25s ease;
+}
+
+
+/* ============================================================
+   WAGE PROGRESSION PAGE
+   ============================================================ */
+
+.wage-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px;
+  margin-bottom: 20px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  color: white;
+}
+
+.wage-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #93c5fd;
+}
+
+.wage-page-title {
+  margin-top: 6px;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+}
+
+.wage-page-description {
+  max-width: 760px;
+  margin-top: 7px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.wage-live-badge {
+  white-space: nowrap;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #bfdbfe;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+
+/* KPI */
+
+.wage-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.wage-kpi-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 18px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.wage-kpi-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.wage-kpi-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.wage-kpi-card strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 1.35rem;
+  color: var(--gov-navy);
+}
+
+
+/* CONTROLS */
+
+.wage-control-card {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 16px;
+  padding: 18px;
+  margin-bottom: 20px;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+}
+
+
+/* CHART */
+
+.wage-chart-card,
+.wage-table-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.wage-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 16px;
+}
+
+.wage-card-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--gov-navy);
+}
+
+.wage-card-header p {
+  margin-top: 3px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.wage-person-badge {
+  padding: 6px 10px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.wage-chart-container {
+  height: 370px;
+  position: relative;
+}
+
+
+/* SUMMARY */
+
+.wage-summary-card {
+  margin-bottom: 20px;
+}
+
+.wage-summary-inner {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 12px;
+}
+
+.wage-summary-main,
+.wage-summary-metric {
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.wage-summary-main h3 {
+  font-size: 1rem;
+  color: var(--gov-navy);
+  font-weight: 800;
+}
+
+.wage-summary-main p {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.wage-summary-metric span {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.wage-summary-metric strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 1.25rem;
+  color: var(--gov-navy);
+}
+
+
+/* TABLE */
+
+.wage-table-wrapper {
+  overflow-x: auto;
+}
+
+.wage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.wage-table th {
+  text-align: left;
+  padding: 11px 10px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.wage-table td {
+  padding: 13px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  vertical-align: middle;
+}
+
+.wage-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.wage-growth-positive {
+  color: #15803d;
+  font-weight: 800;
+}
+
+.wage-growth-negative {
+  color: #dc2626;
+  font-weight: 800;
+}
+
+.wage-status-badge {
+  display: inline-flex;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+
+/* POLICY INSIGHT */
+
+.wage-insight-box {
+  padding: 20px;
+  margin-top: 4px;
+  margin-bottom: 30px;
+  border-radius: var(--radius-lg);
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.wage-insight-box h3 {
+  color: #1e3a8a;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.wage-insight-box p {
+  margin-top: 6px;
+  color: #334155;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+  .wage-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wage-summary-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .wage-page-header {
+    flex-direction: column;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .admin-subtabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .admin-subtab {
+    white-space: nowrap;
+  }
+
+  .wage-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wage-control-card {
+    grid-template-columns: 1fr;
+  }
+
+  .wage-summary-inner {
+    grid-template-columns: 1fr;
+  }
+
+}
